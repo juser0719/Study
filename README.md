@@ -1,2 +1,2 @@
 # Study
-📚🤦‍♂️📚  FE || BE || App || CS
+📚🤦‍♂️📚 ( FE || BE || App || CS )
