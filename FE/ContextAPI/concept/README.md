@@ -1,70 +1,44 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 😶 누구냐 넌?
 
-## Available Scripts
+아마 이 글을 보는 많은 분들은 이미 이친구에 대해 아실거라 생각합니다. 굳이 입아프게 **state 관리**에 대한 이론적인 설명은 생략하도록 하겠습니다 😉 ( 귀찮아서 아님 ㅎ )
 
-In the project directory, you can run:
+짧게 말하자면 위에서 나왔듯이 SPA의 **State 관리**를 위한 라이브러리가 바로 **State API**라 할 수 있습니다!
 
-### `yarn start`
+## 근데 뜬금없이 이걸 왜 포스팅해...?
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+아주 적절한 질문입니다. 
+>구직 공고만 보면 ```Redux``` 사용 가능한자 우대 👍 
+```Redux-saga``` 사용 가능한자 우대 👍 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+이런 공고가 아주 많이 나오는데요... 왜냐하면 이미 많은 기업에서 ```redux```를 사용한 FE를 구성했기 때문인데요. 이를 바탕으로 ```react```시장에서 state library는```redux```가 가장 대표적이고 보편적이라 볼 수 있습니다. 
 
-### `yarn test`
+그래서 ```redux``` 를 해야겠다 😄 하는 순간 엄청난 러닝커브의 수렁에 빠지게 됩니다..
+( [리액트(ReactJS) 개발자가 걷게 되는 길](https://repo.yona.io/doortts/blog/post/297) )
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**물론 리덕스가 나쁘다는 뜻은 절대 아닙니다!!** 
 
-### `yarn build`
+![](https://images.velog.io/images/j_user0719/post/97e67aa1-7753-4648-aae4-6b99c185735b/image.png)
+(Dan Abrarnov의 Medium 게시글 발췌)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+위와 같이 리덕스는 단순 전역 상태 관리 그 이상의 성능으로 개발에 엄청난 강점을 가지고 있습니다.
+그러나 **오직 전역 상태 관리**의 편의성을 기준으로 생각하면 ContextAPI의 강점 역시 분명합니다.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 21웹개발 트렌드 from 드림코딩
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![](https://images.velog.io/images/j_user0719/post/5cac1cda-b3ed-4e8f-b6e7-b662812ea9ab/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202021-05-29%20%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB%2012.05.38.png)
+개인적인 의견도 있지만 위의 상태관리 라이브러리 선호도 조사에서 실제로 Context API의 사용이 리덕스를 추월하게 되었습니다!!!
 
-### `yarn eject`
+(리액트 훅 + Context = 🍯 )
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![](https://images.velog.io/images/j_user0719/post/1375f17d-dcd5-4c6d-b64a-e496e0aa8f8b/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202021-05-29%20%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB%2012.08.14.png)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+그리고 근 3년 안에 없어질것 같은 것의 설문 조사에서 1등 해버린 리덕스...🥲 ( 😄 ) 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## 그래서 리덕스 접고 Context 하라고?
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+리덕스를 사랑하시는 많은 분들께서 살짝 화가 나실까봐 말씀드리지만 **절대** 아닙니다! 리덕스는 리덕스 만의 상당한 강점이 있습니다. 
+그러나 제가 말하고자 하는 것은 처음 리덕스가 나왔을 때의 ~~_비실비실한_~~ Context가 아니라는 것을 말씀드리고 싶습니다.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+React 에서 직접 만든 전역 상태 관리 기능이고, 꾸준히 버전이 올라갈 때마다 업데이트를 하다보니 사용자가 많아지고 편해지는 것이 현재의 트랜드라 생각하고 있습니다. 
+그래서 이번 포스팅에서 Context를 직접 해보며 편리한 점을 공부할겸 정리할겸? 글을 써보도록 하겠습니다 👍 
