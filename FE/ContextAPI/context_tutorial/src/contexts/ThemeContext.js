@@ -1,15 +1,17 @@
-import React, {creacteContext, useState} from 'react'
+import React, {createContext, useState} from 'react'
 
-export const ThemeContext = creacteContext();
+export const ThemeContext = createContext();
 
-function ThemeContextProvider(){
-    const [isLightTheme,setIsLightTheme] = useState(true)
-    const [light,setLight] = useState({syntax : '#555', ui : '#ddd', bg: '#eee'})
-    const [dark, setDark] = useState({syntax:'#ddd',ui: '#333', bg: '#555'})
-    
+function ThemeContextProvider(props){
+    const [state ,setState ] = useState({
+        isLightTheme : true,
+        light : {syntax : '#555', ui : '#ddd', bg: '#eee'},
+        dark  : {syntax:'#ddd',ui: '#333', bg: '#555'}
+    })
+
     return(
-        <ThemeContext.Provider value={}>
-
+        <ThemeContext.Provider value={{...state}}>
+            {props.children}
         </ThemeContext.Provider>
     )
 }
