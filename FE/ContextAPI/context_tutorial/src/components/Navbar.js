@@ -1,9 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { AuthContext } from '../contexts/AuthContext';
 import { ThemeContext } from '../contexts/ThemeContext';
 
 function Navbar () {
-    // const context = useContext(ThemeContext)
     return (
       <AuthContext.Consumer>{(authContext) => (
         <ThemeContext.Consumer>{(context) =>{

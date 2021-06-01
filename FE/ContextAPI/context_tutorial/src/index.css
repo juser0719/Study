@@ -35,4 +35,52 @@ nav ul li {
   padding: 10px;
   margin: 10px auto;
   border-radius: 10px;
+  cursor: pointer;
+}
+
+.book-list li:hover{
+  opacity: 0.3;
+  text-decoration: line-through;
+}
+
+.book-list .title{
+  font-weight: bold;
+  font-size: 1.2em;
+}
+.book-list .author{
+  font-size: 0.8em;
+}
+
+.empty{
+  margin: 20px;
+  text-align: center;
+}
+
+form{
+  padding: 20px;
+}
+button {
+  margin: 10px auto;
+  background: #eee;
+  border: 0;
+  padding: 6px 20px;
+  display: block;
+}
+
+input[type='text']{
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  margin: 6px 0;
+  background: #eee;
+  color: #fff;
+  border: 0;
+}
+
+input[type='submit']{
+  margin: 10px auto;
+  background: #eee;
+  border: 0;
+  padding: 6px 20px;
+  display: block;
 }
