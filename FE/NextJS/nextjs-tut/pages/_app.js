@@ -15,6 +15,8 @@ function MyApp({ Component, pageProps }) {
 export default MyApp;
 
 /*
+client에서 띄우길 바라는 전체 컴포넌트의 레이아웃
+최초 실행됨.
 페이지 전환시 레이아웃 유지
 페이지 전환시 상태값 유지
 componentDidCatch 를 이용해서 커슽첨 에러 핸들링 가능
