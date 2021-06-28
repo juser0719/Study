@@ -1,4 +1,4 @@
-import { Html, Head, Main, NextScript } from "next/document";
+import Document,{ Html, Head, Main, NextScript } from "next/document";
 
 function MyDocument (){
 
@@ -12,7 +12,11 @@ function MyDocument (){
       </Html>
     );
 }
+MyDocument.getInitialProps = Document.getInitialProps;
+//  각 페이지마다 사전에 불러와야할 데이터를 서버에서 미리 처리하도록 도와줌.
 
+MyDocument.renderDocument = Document.renderDocument;
+//  static html를 구성하기 위한 _app.js에서 구성한 Html body가 어떤 형태로 들어갈지 구성
 export default MyDocument;
 
 /*
