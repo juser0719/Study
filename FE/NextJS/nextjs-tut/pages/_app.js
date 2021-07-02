@@ -5,7 +5,7 @@ import Top from '../src/component/Top';
 
 function MyApp({ Component, pageProps }) {
   // Component : 현재 페이지 의미 , pageProps : 데이터 케치 메서드로 가져온 초기 객체
-  return  <div>
+  return  <div style={{ width: 1000, margin: "0 auto" }}>
   <Top />
   <Component {...pageProps} />
   <Footer/>
