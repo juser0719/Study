@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import {useEffect, useState} from 'react'
+import { Loader } from 'semantic-ui-react'
 import Item from '../../src/component/Item'
 /* 
 다이나믹 라우팅으로 만약 클릭을 하게 되면 해당 id에 대한 페이지로 들어오게 됨.
@@ -10,6 +11,8 @@ const Post = () => {
   const [item, setItem] = useState({})
   const router = useRouter()
   const { id } = router.query
+  const [isLoading, setIsLoading] = useState(true);
+
   const API_URL = `http://makeup-api.herokuapp.com/api/v1/products/${id}.json`
 
   useEffect(() => { 
@@ -17,12 +20,17 @@ const Post = () => {
       axios.get(API_URL)
     .then(res =>{
       setItem(res.data)
+      setIsLoading(false);
     })
     }
     
     
   }, [id])
-  return <Item item ={item}/>
+  return <>{ isLoading ? (<div style= {{padding : "300px 0"}}> 
+  <Loader inline="centered" active>
+    Loading
+  </Loader>
+</div>) : <Item item ={item}/>}</>
 }
 
 export default Post
