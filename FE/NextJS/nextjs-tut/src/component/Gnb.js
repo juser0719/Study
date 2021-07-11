@@ -28,5 +28,10 @@ export default function Gnb(){
           active={activeItem === 'about'}
           onClick = {goLink}
         />
+        <Menu.Item
+          name='contact'
+          active={activeItem === 'contact'}
+          onClick = {goLink}
+        />
       </Menu>)
 }
