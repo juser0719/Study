@@ -7,12 +7,13 @@ import Item from '../../src/component/Item'
 /* 
   다이나믹 라우팅으로 만약 클릭을 하게 되면 해당 id에 대한 페이지로 들어오게 됨.
 */
-const Post = ({item}) => {
+const Post = ({item , name}) => {
   return <>{ item && (<>
   <Head>
     <title>{item.name}</title>
     <meta name = "description" content ={item.description}></meta>
   </Head>
+  {name} 환경입니다.
   <Item item ={item}/></>)}</>
 }
 
@@ -28,7 +29,8 @@ export async function getServerSideProps(context) {
 
   return {
     props: {
-      item : data
+      item : data,
+      name : process.env.name
     }
   }
 
