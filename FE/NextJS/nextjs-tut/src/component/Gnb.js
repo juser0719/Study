@@ -4,6 +4,7 @@ import { Menu } from 'semantic-ui-react';
 export default function Gnb(){
     let activeItem;
     const router = useRouter()
+    
     const goLink = (e,data) =>{
       if (data.name === 'home'){
         router.push('/')
@@ -28,10 +29,10 @@ export default function Gnb(){
           active={activeItem === 'about'}
           onClick = {goLink}
         />
-        <Menu.Item
+        {/* <Menu.Item
           name='contact'
           active={activeItem === 'contact'}
           onClick = {goLink}
-        />
+        /> */}
       </Menu>)
 }
