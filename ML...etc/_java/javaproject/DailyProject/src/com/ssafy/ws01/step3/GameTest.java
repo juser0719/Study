@@ -19,7 +19,6 @@ public class GameTest {
 		
 		while(cnt != win_max) {
 			int computer = (int)(Math.random() *3)+ 1;
-			int my = 0;
 			System.out.println("가위바위보 중 하나 입력 :");
 			String user = sc.next();
 			
