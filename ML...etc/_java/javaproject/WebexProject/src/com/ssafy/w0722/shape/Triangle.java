@@ -13,6 +13,7 @@ class Triangle extends Shape {
 	public Triangle(int data1,int data2) {
 		super(data1,data2);
 	}
+	@Override
 	public double getSize() {
 		return super.getData1()*super.getData2()/2.0;
 	}
