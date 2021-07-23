@@ -10,7 +10,7 @@ package com.ssafy.w0722.shape;
  *  +getSize():double 
  */
 
-public class Shape {
+abstract public class Shape {
 	private int data1;
 	private int data2;
 	
@@ -40,7 +40,5 @@ public class Shape {
 		this.data2 = data2;
 	}
 	
-	public double getSize() {
-		return 1.2;
-	}
+	abstract public double getSize();
 }
