@@ -11,6 +11,15 @@ public class BasicProblem_24 {
 
         // TODO: 주사위를 던져서 나올 수 있는 경우의 수 ( 1~ 6 ) 를 시뮬레이션 하려고 한다.
         // @@ Random 수를 이용하여 코드를 작성하세요.
+        int num = (int)(Math.random() *N) +1;
+        System.out.println(num);
+        
+        Random rand = new Random();
+        num = rand.nextInt(N)+1;
+        System.out.println(num);
+        
+        num = rand.nextInt(100)%N+1;
+        System.out.println(num);
         // END:
     }
 

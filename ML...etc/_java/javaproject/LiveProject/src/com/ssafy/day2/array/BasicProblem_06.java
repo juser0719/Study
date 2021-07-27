@@ -10,13 +10,14 @@ public class BasicProblem_06 {
         int N = 6;
         Random rand = new Random();
         // TODO: BasicProblem_04를 for-each 문장으로 변경해보세요.
-        int [] resArray = new int[5];
-        for(int num : resArray) {
-        	num = rand.nextInt(N) + 1;
-        } // read only라서,
-        int i =0; 
-        for(int num : resArray) {
-        	System.out.printf("%d 번째 - %d%n", i ++, num);
+        int [] resultArray = new int [5];
+        for(int num: resultArray) {
+            num = rand.nextInt(N)+1;
+        }
+
+        int i=0;
+        for(int num:resultArray) {
+            System.out.printf("%d번째 - %d%n",i++, num);
         }
         // END:
     }

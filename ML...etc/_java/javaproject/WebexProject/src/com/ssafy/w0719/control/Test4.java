@@ -25,7 +25,7 @@ public class Test4 {
 		int cnt = 0 ;
 		
 		while(cnt <50) {
-			Random rand = new Random();
+//			Random rand = new Random();
 			n = (int)(Math.random()*101);
 			sum += n;
 			cnt += 1;
@@ -34,7 +34,7 @@ public class Test4 {
 				System.out.println();
 		}
 		
-		System.out.println("\n합 = "+sum);
+		System.out.println("\n\n합 = "+sum);
 
 	}
 }

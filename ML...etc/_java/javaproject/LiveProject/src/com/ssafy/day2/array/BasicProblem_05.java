@@ -14,7 +14,7 @@ public class BasicProblem_05 {
 
         String[] strs = {"S", "S", "A", "F", "Y"};
 
-        boolean[] bools;
-        bools={true,false,false};
+        boolean[] bools = {true,false,false};
+        
     }
 }

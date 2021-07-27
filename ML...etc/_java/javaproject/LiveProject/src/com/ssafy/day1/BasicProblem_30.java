@@ -13,6 +13,27 @@ public class BasicProblem_30 {
         int num2 = rand.nextInt(N)+1;
         String result = null;
         // TODO: num1 과 num2가 모두 짝수이거나 모두 홀수이면 A, 아니면 B를 출력하시오.
+        boolean isNum1Even = num1%2==0;   
+        boolean isNum2Even = num2%2==0;
+        /*
+        if(isNum1Even) {
+            if(isNum2Even) {
+                result = "A";
+            }else {
+                result = "B";
+            }
+        }else {
+            if(!isNum2Even) {
+                result = "A";
+            }else {
+                result = "B";
+            }
+        }*/
+        
+        //result = isNum1Even==isNum2Even?"A":"B"; 
+        
+        result = (num1 + num2)%2==0?"A":"B";
+        
         // END:
         System.out.printf("%d, %d --> %s%n", num1, num2, result);
     }

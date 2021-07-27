@@ -11,16 +11,20 @@ public class BuildingTest {
 		System.setIn(new FileInputStream("input.txt"));
 		Scanner sc = new Scanner(System.in);
 		int TC = sc.nextInt();
+	
 		for(int t = 1; t <= TC; t++){
 			int N = sc.nextInt();					// 신도시 부지의 크기 변수	
 			char[][] area=new char[N][N];			// 신도시 부지 정보를 저장하는 2차원 배열
 			// 신도시 부지 정보를 입력받아 저장한다.
+			
 			for(int i=0; i<N; i++) {
 				for(int j=0; j<N; j++) {
 					area[i][j] = sc.next().charAt(0);
 				}
 			}
+			
 			int ans=0;
+			
 			for(int i=0; i<N; i++) {     	//신도시 부지의 모든 구획을 검색
 				for(int j=0; j<N; j++) {
 					int bCount=0;			// 가능한 빌딩 크기 변수

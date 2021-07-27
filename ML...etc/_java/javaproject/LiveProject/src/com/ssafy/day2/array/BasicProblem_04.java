@@ -6,13 +6,22 @@ package com.ssafy.day2.array;
 public class BasicProblem_04 {
     public static void main(String[] args) {
         String org = "SSAFY";
-        char [] chars = org.toCharArray();
-//        char[] chars = new char[org.length()];
-//        for (int i =0 ; i < org.length(); i ++) {
-//        	chars[i] = org.charAt(i);
-//        }
-        for (int i =0; i< chars.length; i++) {
-        	System.out.print(chars[i]);
+        // TODO: SSAFY를 char []에 저장하고 출력하시오.
+        char[] chars = new char[org.length()];
+
+        for (int i = 0; i < chars.length; i++) {
+            chars[i] = org.charAt(i);
         }
+
+        for (int i = 0; i < chars.length; i++) {
+            System.out.print(chars[i]);
+        }
+        System.out.println();
+        // API의 활용
+        chars = org.toCharArray();
+        for (int i = 0; i < chars.length; i++) {
+            System.out.print(chars[i]);
+        }
+        // END:
     }
 }
