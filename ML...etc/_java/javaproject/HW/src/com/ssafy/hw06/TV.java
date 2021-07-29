@@ -2,7 +2,7 @@ package com.ssafy.hw06;
 
 public class TV extends Product {
 	
-	public TV() {
+	public TV(String string, int i, int j, int k, int l) {
 		
 	}
 
