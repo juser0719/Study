@@ -2,8 +2,8 @@ package com.ssafy.day5.exception;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+//import java.sql.DriverManager;
+//import java.sql.SQLException;
 
 
 /**
@@ -15,12 +15,12 @@ public class CheckedExceptionHandling {
     	try {
 			Class.forName("abc.Def"); // ClassNotFoundException
             new FileInputStream("Hello.java"); // FileNotFoundException
-            DriverManager.getConnection("Hello"); // SQLException
+//            DriverManager.getConnection("Hello"); // SQLException
 		} catch (ClassNotFoundException | FileNotFoundException e) {
 			// TODO: handle exception
 			System.out.println(e.getMessage());
-		}  catch (SQLException e) {
-			System.out.println(e.getMassage());
+		}  catch (Exception e) {
+			e.printStackTrace();
 		}
             
             // TODO: 다양한 예외를 처리하는 코드를 작성하시오.
