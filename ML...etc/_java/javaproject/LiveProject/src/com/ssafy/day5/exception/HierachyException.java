@@ -9,14 +9,25 @@ import java.io.IOException;
  */
 public class HierachyException {
     public static void main(String[] args) {
-        String src = "./.project";
+        String src = "..project";
          
-            FileInputStream input = new FileInputStream(src);
+            FileInputStream input = null;
+			try {
+				input = new FileInputStream(src);
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
             int readData = -1;
 
-            while ((readData = input.read()) != -1) {
-                System.out.print((char) readData);
-            }
+            try {
+				while ((readData = input.read()) != -1) {
+				    System.out.print((char) readData);
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
             // TODO: 상속의 관계를  고려하여 예외처리 하시오.
         // END:
 
