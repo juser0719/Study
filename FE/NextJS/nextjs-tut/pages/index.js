@@ -51,12 +51,12 @@ export async function getStaticProps() {
   // 빌드시에 딱 한번만 호출되고 바로 static file로 빌드됨. = 이후 수정 불가.
   const apiUrl = process.env.API_URL;
   const res = await axios.get(apiUrl);
-  const data= res.data
+  const data= res.data;
 
   return {
     props: {
       list : data,
-      name : process.env.name
-    }
+      name : process.env.name,
+    },
   }
 }
