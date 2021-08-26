@@ -26,7 +26,7 @@ export async function getStaticPaths() {
       { params: { id: '730' } },
       { params: { id: '729' } }
     ],
-    fallback: true, // fallback : 없는 페이지에 대한 대응을 할지 안할지 설정.
+    fallback: false, // fallback : 없는 페이지에 대한 대응을 할지 안할지 설정.
 
   };
 }
