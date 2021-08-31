@@ -8,6 +8,15 @@ import Item from '../../src/component/Item'
   다이나믹 라우팅으로 만약 클릭을 하게 되면 해당 id에 대한 페이지로 들어오게 됨.
 */
 const Post = ({ item, name }) => {
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <div style={{ padding: "100px 0" }}>
+      <Loader active inline="centered">
+        Loading...
+      </Loader>
+    </div>
+  }
   return <>{item && (<>
     <Head>
       <title>{item.name}</title>
@@ -20,13 +29,22 @@ const Post = ({ item, name }) => {
 export default Post;
 
 export async function getStaticPaths() {
+  // 이제 실제 리스트 API 호출해서 paths를 불러오겠음.
+  const apiUrl = process.env.API_URL
+  const res = await axios.get(apiUrl);
+  const data = res.data
   return {
-    paths: [
-      { params: { id: '740' } },
-      { params: { id: '730' } },
-      { params: { id: '729' } }
-    ],
-    fallback: false, // fallback : 없는 페이지에 대한 대응을 할지 안할지 설정.
+    // paths: [
+    //   { params: { id: '740' } },
+    //   { params: { id: '730' } },
+    //   { params: { id: '729' } }
+    // ],
+    paths: data.slice(0, 9).map(item => ({
+      params: {
+        id: item.id.toString(),
+      },
+    })),
+    fallback: true, // fallback : 없는 페이지에 대한 대응을 할지 안할지 설정.
 
   };
 }
