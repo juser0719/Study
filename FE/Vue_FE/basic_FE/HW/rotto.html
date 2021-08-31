@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script>
+        function getnumber() {
+            let nums = new Set();
+            while (nums.size != 7) {
+                const num = parseInt((Math.random() * 45 + 1));
+                nums.add(num);
+            }
+            document.getElementById("rotto").innerText = Array.from(nums).slice(0, 5);
+            document.getElementById("bonus").innerText = Array.from(nums)[6];
+        }
+    </script>
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>로또 추첨 번호 뽑기</h1>
+    <p>추첨 번호 : <span id="rotto"></span></p>
+    <p>보너스 번호 : <span id="bonus"></span></p>
+    <button onclick="getnumber()">추첨번호 뽑기</button>
+</body>
+
+</html>

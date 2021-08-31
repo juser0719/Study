@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function timer() {
+            let h = Number(document.getElementById("h").value);
+            let m = Number(document.getElementById("m").value);
+            let s = Number(document.getElementById("s").value);
+
+            const tid = setInterval(() => {
+
+                if (s === 0) {
+                    if (m === 0) {
+                        if (h === 0) {
+                            clearInterval(tid)
+                            return;
+                        }
+                        h--;
+                        m = 59;
+                    }
+                    m--;
+                    s = 59;
+                } else
+                    s--;
+                const hour = h < 10 ? "0" + h : h;
+                const min = m < 10 ? "0" + m : m;
+                const sec = s < 10 ? "0" + s : s;
+                document.getElementById("timer").textContent = h + " : " + m + " : " + s;
+            }, 1000);
+
+        }
+    </script>
+</head>
+
+<body>
+    <h1>타이머</h1>
+    <p>타이머를 동작시킬 시간을 입력해주세요.</p>
+
+    <span>
+        <input type="text" id="h" value="0"> 시 <input type="text" id="m" value="0"> 분 <input type="text" id="s"
+            value="0"> 초 <button onclick="timer()">시작</button>
+    </span>
+    <h3 id="timer"></h3>
+
+</body>
+
+</html>
