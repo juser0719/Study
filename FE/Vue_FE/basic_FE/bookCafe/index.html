@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="shortcut icon" href="img/favicon.ico"> -->
     <link rel="stylesheet" href="./index.css">
+    <script type="text/javascript" src="./js/cafe.js"></script>
     <title>SSAFY BOOK CAFE</title>
 </head>
 
@@ -18,11 +19,16 @@
 
             <div class="header_nav_search"></div>
             <div class="header_nav_menu">
-                <div class="header_nav_menuitem"><a class="nav_link" href="#">로그인</a></div>
-                <div class="header_nav_menuitem"><a class="nav_link" href="#">회원가입</a></div>
-                <div class="header_nav_menuitem"><a class="nav_link" href="#">로그아웃</a></div>
-                <div class="header_nav_menuitem"><a class="nav_link" href="#">마이페이지</a></div>
-                <div class="header_nav_menuitem"><a class="nav_link" href="#">관리자</a></div>
+                <div id="header_nav_confirm_off">
+                    <div class="header_nav_menuitem"><a class="nav_link" href="#" onclick="login();">로그인</a></div>
+                    <div class="header_nav_menuitem"><a class="nav_link" href="#">회원가입</a></div>
+                </div>
+                <div id="header_nav_confirm_on" style="display: none">
+                    <div class="header_nav_menuitem"><a class="nav_link" href="#" onclick="logout();">로그아웃</a></div>
+                    <div class="header_nav_menuitem"><a class="nav_link" href="#">마이페이지</a></div>
+                    <div class="header_nav_menuitem"><a class="nav_link" href="#" onclick="pollMake();">관리자</a></div>
+                </div>
+
             </div>
         </nav>
     </header>
@@ -33,8 +39,8 @@
         <div class="content_left">
 
             <div class="profile">
-                <img class="profile_img" src="img/noimg.png" width="120" alt="" />
-                <img class="profile_img" id="profile_img" src="img/profile.png" width="120" alt="" />
+                <img id="profile_img" src="img/noimg.png" width="120" alt="" />
+                <!-- <img class="profile_img" id="profile_img" src="img/profile.png" width="120" alt="" /> -->
             </div>
 
             <!--메뉴 Start-->
@@ -43,7 +49,7 @@
                 <div class="store_display" style="display: none">전국매장접기</div>
                 <ul class="store_item">
                     <li>
-                        <a class="store_area">서울</a>
+                        <a class="store_area" onclick="slideDown(seoul)">서울</a>
                         <div class="store_item_sub">
                             <ul>
                                 <li>역삼점</li>
@@ -52,7 +58,7 @@
                         </div>
                     </li>
                     <li>
-                        <a class="store_area">대전</a>
+                        <a class="store_area" onclick="slideDown(daejeon)">대전</a>
                         <div class="store_item_sub">
                             <ul>
                                 <li>학하점</li>
@@ -61,7 +67,7 @@
                         </div>
                     </li>
                     <li>
-                        <a class="store_area">구미</a>
+                        <a class="store_area" onclick="slideDown(gumi)">구미</a>
                         <div class="store_item_sub">
                             <ul>
                                 <li>인동점</li>
@@ -70,7 +76,7 @@
                         </div>
                     </li>
                     <li>
-                        <a class="store_area">광주</a>
+                        <a class="store_area" onclick="slideDown(gwangju)">광주</a>
                         <div class="store_item_sub">
                             <ul>
                                 <li>하남산단점</li>
@@ -89,26 +95,26 @@
                 <div class="vote_answer">
                     <ul>
                         <li>
-                            <input type="radio" name="" id="" />
+                            <input type="radio" name="vote_answer" value="파이썬" />
                             <img src="img/poll/python.png" width="70" alt="" /> Python
                         </li>
                         <li>
-                            <input type="radio" name="" id="" />
+                            <input type="radio" name="vote_answer" value="HTML5" />
                             <img src="img/poll/html5.png" width="70" alt="" /> HTML5
                         </li>
                         <li>
-                            <input type="radio" name="" id="" />
+                            <input type="radio" name="vote_answer" value="VueJS" />
                             <img src="img/poll/vuejs.png" width="70" alt="" /> Vue.js
                         </li>
                         <li>
-                            <input type="radio" name="" id="" />
+                            <input type="radio" name="vote_answer" value="Java" />
                             <img src="img/poll/java.png" width="70" alt="" /> Java
                         </li>
                     </ul>
                 </div>
 
                 <div class="vote_button">
-                    <button class="button btn_primary">투표하기</button>
+                    <button class="button btn_primary" onclick="poll()">투표하기</button>
                     <button class="button">결과보기</button>
                 </div>
                 <div class="vote_date">투표기간 : 21.03.01 ~ 21.03.31</div>
