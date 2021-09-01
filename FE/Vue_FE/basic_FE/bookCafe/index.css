@@ -11,17 +11,17 @@
     a:hover{
         cursor: pointer;
     }
-    /* �곷떒 header �곸뿭�� �띿꽦 �ㅼ젙 */
+    /* 상단 header 영역의 속성 설정 */
     header {
         height: 70px;
-        /* 洹몃┝�� �④낵 */
+        /* 그림자 효과 */
         box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.3);
     }
     header > nav {
         position: relative;
         margin: auto;
         max-width: 1200px;
-        /* calc() CSS �⑥닔瑜� �ъ슜�섎㈃ CSS �띿꽦�� 媛믪쑝濡� 怨꾩궛�앹쓣 吏��뺥븷 �� �덈떎 */
+        /* calc() CSS 함수를 사용하면 CSS 속성의 값으로 계산식을 지정할 수 있다 */
         width: calc(100% - 120px);
         height: 70px;
     }
@@ -52,20 +52,20 @@
         margin-right: 10px;
     }
     
-    /* 以묒븰 contents �곸뿭�� �띿꽦 �ㅼ젙 */
+    /* 중앙 contents 영역의 속성 설정 */
     .content {
         margin: 10px auto;
         max-width: 1200px;
     }
     
-    /* 以묒븰 �쇱そ �곸뿭�� �띿꽦 �ㅼ젙 */
+    /* 중앙 왼쪽 영역의 속성 설정 */
     .content_left {
         float: left;
         width: 25%;
         min-height: 500px;
         /* background: pink; */
     }
-    /* �꾨줈�� �곸뿭�� �띿꽦 �ㅼ젙 */
+    /* 프로필 영역의 속성 설정 */
     .profile {
         width: 100%;
         padding: 10px 10%;
@@ -78,18 +78,27 @@
         border-radius: 10px;
     }
     
-    /* 以묒븰 �쇱そ 留ㅼ옣 �곸뿭�� �띿꽦 �ㅼ젙 */
+    /* 중앙 왼쪽 매장 영역의 속성 설정 */
     .store_title {
         text-align: center;
         padding: 10px;
     }
-    .store_display {
+    /* .store_display {
         padding: 10px;
         font-size: 18px;
         line-height: 30px;
         background: #bdbdbd;
         border-radius: 5px;
+    } */
+    .store_display_on,
+    .store_display_off {
+    padding: 10px;
+    font-size: 18px;
+    line-height: 30px;
+    background: #bdbdbd;
+    border-radius: 5px;
     }
+    
     .store_item li {
         padding: 10px 10px 10px 20px;
         font-size: 18px;
@@ -98,12 +107,19 @@
         border-radius: 5px;
         text-align: left;
     }
-    .store_area {
+    
+    /* .store_area {
         color: #414141;
         font-weight: bold;
+    } */
+    
+    .store_area {
+        color: #5c095b;
+        font-weight: bold;
+        cursor: pointer;
     }
     
-    /* 以묒븰 �쇱そ �ㅻЦ議곗궗 �곸뿭�� �띿꽦 �ㅼ젙 */
+    /* 중앙 왼쪽 설문조사 영역의 속성 설정 */
     .vote {
         margin: 10px;
         border: 2px solid rgba(0, 0, 0, 0.3);
@@ -130,6 +146,7 @@
     .vote_answer > ul > li:last-child {
         margin-bottom: 10px;
     }
+    .vote_answer > ul > li > label > img,
     .vote_answer > ul > li > img {
         width: 35px;
         border-radius: 3px;
@@ -161,7 +178,7 @@
         /* background: orange; */
     }
     
-    /* 以묒븰 content �대�吏�寃뚯떆�� �곸뿭�� �띿꽦 �ㅼ젙 */
+    /* 중앙 content 이미지게시판 영역의 속성 설정 */
     .menu {
         padding: 10px 20px;
     }
@@ -193,7 +210,7 @@
         margin-top: 10%;
     }
     
-    /* 以묒븰 content text寃뚯떆�� �곸뿭�� �띿꽦 �ㅼ젙 */
+    /* 중앙 content text게시판 영역의 속성 설정 */
     .article {
         padding: 10px 20px;
     }
@@ -253,7 +270,7 @@
     width: 75%;
     }
     
-    /* �섎떒 footer �곸뿭�� �띿꽦 �ㅼ젙 */
+    /* 하단 footer 영역의 속성 설정 */
     footer{
         clear: both;
         margin: 10px auto;
@@ -267,47 +284,59 @@
         height: 50px;
         line-height: 50px;
     }
+    
+    /* 투표만들기 */
+    .poll {
+        width: 483px;
+        border: 2px solid #dddddd;
+        border-radius: 5px;
+        margin: 10px;
+        padding: 20px;
+    }
     .poll_title {
         padding-bottom: 10px;
         color: #120644;
         font-weight: bold;
         font-size: 20px;
         text-align: center;
-      }
-    .poll_question {
+    }
+    /* .poll_question {
         margin-bottom: 10px;
-      }
-      
-      .poll_answer {
+    }
+    
+    .poll_answer {
+    margin-bottom: 10px;
+    }
+    
+    .poll_answer_item {
+    margin-bottom: 10px;
+    } */
+    .poll_md{
         margin-bottom: 10px;
-      }
-      
-      .poll_answer_item {
-        margin-bottom: 10px;
-      }
-      
-      .poll_make {
-        margin-top: 10px;
-        text-align: center;
-      }
-      
-      input[type="text"] {
+    }
+    
+    .poll_make {
+    margin-top: 10px;
+    text-align: center;
+    }
+    
+    input[type="text"] {
         width: 250px;
         background-color: rgb(245, 245, 245);
         border: 1px solid rgb(235, 235, 235);
         padding: 7px;
         margin-right: 5px;
-      }
-      
-      input[type="text"]::placeholder {
+    }
+    
+    input[type="text"]::placeholder {
         font-weight: bold;
         font-size: 13px;
         color: rgb(150, 150, 150);
-      }
-      
-      label {
+    }
+    
+    label {
         color: #120644;
         font-weight: bold;
         font-size: 16px;
         margin-right: 10px;
-      }
+    }
