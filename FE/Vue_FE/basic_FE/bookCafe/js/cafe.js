@@ -1,3 +1,43 @@
+window.onload = () => {
+    const poll = localStorage.getItem("poll");
+    const pollDiv = document.querySelector("#vote");
+    if (poll) {
+        const vote = JSON.parse(poll);
+        const { s_date, e_date, question, answers } = vote;
+        // const e_date = vote.end_date;
+        // const question = vote.question;
+        // const answers = vote.answers;
+        let pollContent = "<div class = 'vote_title'>[당신의 선택]</div>";
+        pollContent += "<div class ='vote_question'>" + question + "</div>"
+        pollContent += "<div class = 'vote_answer'>";
+        pollContent += " <ul>"
+        for (var i = 0; i < answers.length; i++) {
+            pollContent += "<li>";
+            pollContent += "    <label>";
+            pollContent += '      <input type="radio" name="vote_answer" value="' + answers[i] + '" />' + answers[i];
+            pollContent += "    </label>";
+            pollContent += "  </li >";
+        }
+        pollContent += "</ul>";
+        pollContent += "</div>";
+        pollContent += '<div class="vote_button">';
+        pollContent += '  <button class="button btn_primary" onclick="javascript:poll();">투표하기</button>';
+        pollContent += '  <button class="button">결과보기</button>';
+        pollContent += "</div>";
+        pollContent += '<div class="vote_date">투표기간 : ' + dateFormat(sdate) + " ~ " + dateFormat(edate) + "</div>";
+
+        pollDiv.innerHTML = pollContent;
+
+    } else {
+        pollDiv.innerHTML = '<div class="vote_title">진행중인 투표가 없습니다.</div>'
+    }
+}
+
+function dateFormat(date) {
+    let yymmdd = date.split("-");
+    return yymmdd[0], substr(2, 2) + "." + yymmdd[1] + "." + yymmdd[2];
+}
+//로그인----------------------------------------------------------
 function login() {
     var userid = prompt("아이디입력", "ssafy");
     if (userid.length == 0) {
@@ -19,13 +59,36 @@ function login() {
         alert("아이디 또는 비밀번호 확인하시오")
     }
 }
-
+//로그아웃--------------------------------------------------------
 function logout() {
+    // document.getElementById("profile_img").src = "img/noimg.png";
+    // document.getElementById("header_nav_confirm_on").style.display = "none";
+    // document.getElementById("header_nav_confirm_off").style.display = "block";
     document.querySelector("#profile_img").setAttribute("src", "img/noimg.png");
-    document.querySelector("#header_nav_confirm_off").setAttribute("style", "display : none");
-    document.querySelector("#header_nav_confirm_on").setAttribute("style", "display : block");
+    document.querySelector("#header_nav_confirm_on").setAttribute("style", "display: none");
+    document.querySelector("#header_nav_confirm_off").setAttribute("style", "display: block");
 }
+//지역매장 펼치기/접기--------------------------------------------
 var cnt = 0;
+function slideDown(areaid) {
+    if (areaid.style.display == "none") {
+        areaid.style.display = "block";
+        cnt++;
+    } else if (areaid.style.display == "block") {
+        areaid.style.display = "none";
+        cnt--;
+    }
+
+    if (cnt == 4) { // 모든 메뉴가 펼쳐졌다면 전국매장접기 버튼 활성화
+        document.getElementsByClassName("store_display_off")[0].style.display = "block";
+        document.getElementsByClassName("store_display_on")[0].style.display = "none";
+    } else {        // 모든 메뉴가 접혔다면 전국매장펼치기 버튼 활성화
+        document.getElementsByClassName("store_display_off")[0].style.display = "none";
+        document.getElementsByClassName("store_display_on")[0].style.display = "block";
+    }
+}
+
+//전국매장 펼치기 / 접기------------------------------------------
 function allSlide(onoff) {
     if (onoff == "on") {  //펼치기
         var subs = document.getElementsByClassName("store_item_sub");
@@ -43,61 +106,85 @@ function allSlide(onoff) {
         cnt = 0;
     }
 }
-
-function slideDown(areaid) {
-    if (areaid.style.display === "none") {
-        areaid.style.display === "display";
-        cnt++;
-    }
-}
-
+//투표하기-------------------------------------------------------
 function poll() {
-    const votes = document.getElementsByName("vote_answer");
-    let sel_menu = "";
-    for (var i = 0; i < votes.length; i++)
+    var votes = document.getElementsByName("vote_answer");
+    var sel_menu = "";
+
+    for (var i = 0; i < votes.length; i++) {
         if (votes[i].checked == true) {
             sel_menu = votes[i].value;
             break;
         }
-    alert(sel_menu);
+    }
+    alert(sel_menu + "를 선택했습니다");
 }
-
+//관리자(투표만들기)----------------------------------------------
 function pollMake() {
-    window.open("pollmake.html", "poll", "width=420,height =300, top = 300,left = 400");
+    window.open("pollmake.html", "poll", "width=420,height=300,top=300,left=400");
 }
-
+//답변 항목 추가-------------------------------------------------
 function addAnswer() {
-    let listDiv = document.getElementsById("poll_answer_list");
-    let divEl = document.createElement("div");
-    divEl.setAttribute("class", "poll_answer_item");
-    let inputEl = document.createElement("input");
-    inputEl.setAttribute("type", "text");
-    let bottonEl = document.createElement("button");
-    bottonEl.setAttribute("type", "button");
-    bottonEl.setAttribute("class", "button");
+    var listDiv = document.getElementById("poll_answer_list");
 
-    bottonEl.addEventListener("click", (e) => {
-        let parent = this.parentNode;
+    var divEl = document.createElement("div");        //<div></div>
+    divEl.setAttribute("class", "poll_answer_item");  //<div class="poll_answer_item"></div>
+    var inputEl = document.createElement("input");    //<input />
+    inputEl.setAttribute("type", "text");             //<input type="text" /> 
+    inputEl.setAttribute("name", "answer");           //<input type="text" name="answer" />
+    var buttonEl = document.createElement("button");
+    buttonEl.setAttribute("type", "button");
+    buttonEl.setAttribute("class", "button");
+
+    //버튼에 click 이벤트 리스너 등록
+    buttonEl.addEventListener("click", function (e) {
+        var parent = this.parentNode;
         listDiv.removeChild(parent);
     });
-    bottonEl.appendChild(document.createTextNode("삭제"));
+    buttonEl.appendChild(document.createTextNode("삭제"));
 
     divEl.appendChild(inputEl);
-    divEl.appendChild(bottonEl);
-    divEl.appendChild(inputEl);
+    divEl.appendChild(buttonEl);
+    listDiv.appendChild(divEl);
 }
-
+//투표생성----------------------------------------------------------
 function makePoll() {
+    let sdate = document.querySelector("#start_date").value;
+    let edate = document.querySelector("#end_date").value;
+
+    if (!sdate || !edate) {
+        alert("설문 기간 입력하시오");
+        return;
+    }
     if (!document.querySelector("#question").value) {
+        alert("질문 내용을 입력하시오.");
+        return;
+    }
+    let quest = document.querySelector("#question").value;
+    if (!quest) {
         alert("질문 내용을 입력하시오");
         return;
     }
-    let answers = document.getElementsByName("answer");
-    for (var i = 0; i < answers.length; i++)
-        if (!answers[i].value) {
-            alert("check again")
+    var answerInput = document.querySelectorAll("input[name='answer']");
+    for (var i = 0; i < answerInput.length; i++) {
+        if (!answerInput[i].value) {
+            alert("답변 항목에 입력하시오");
             return;
         }
-    alert("create vote");
-    self.close()
+    }
+    let answers = [];
+    for (var i = 0; i < answerInput.length; i++) {
+        answers.push(answerInput[i].value);
+    }
+    const poll = {
+        start_date: sdate,
+        end_date: edate,
+        question: quest,
+        answers: answers
+    };
+    const poll_json = JSON.stringify(poll);
+    localStorage.setItem("poll", poll_json);
+    alert("투표를 생성합니다.");
+    opener.document.location.reload();
+    self.close();
 }

@@ -83,13 +83,22 @@ nav > a {
     text-align: center;
     padding: 10px;
 }
-.store_display {
+/* .store_display {
     padding: 10px;
     font-size: 18px;
     line-height: 30px;
     background: #bdbdbd;
     border-radius: 5px;
+} */
+.store_display_on,
+.store_display_off {
+padding: 10px;
+font-size: 18px;
+line-height: 30px;
+background: #bdbdbd;
+border-radius: 5px;
 }
+
 .store_item li {
     padding: 10px 10px 10px 20px;
     font-size: 18px;
@@ -98,9 +107,16 @@ nav > a {
     border-radius: 5px;
     text-align: left;
 }
-.store_area {
+
+/* .store_area {
     color: #414141;
     font-weight: bold;
+} */
+
+.store_area {
+    color: #5c095b;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 /* 중앙 왼쪽 설문조사 영역의 속성 설정 */
@@ -130,6 +146,7 @@ nav > a {
 .vote_answer > ul > li:last-child {
     margin-bottom: 10px;
 }
+.vote_answer > ul > li > label > img,
 .vote_answer > ul > li > img {
     width: 35px;
     border-radius: 3px;
@@ -266,4 +283,62 @@ footer > ul > li {
     margin-right: 20px;
     height: 50px;
     line-height: 50px;
+}
+
+/* 투표만들기 */
+.poll {
+    width: 483px;
+    border: 2px solid #dddddd;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 20px;
+}
+.poll_title {
+    padding-bottom: 10px;
+    color: #120644;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+}
+
+.poll_mb {
+    margin-bottom: 10px;
+}
+/* .poll_question {
+    margin-bottom: 10px;
+}
+
+.poll_answer {
+margin-bottom: 10px;
+}
+
+.poll_answer_item {
+margin-bottom: 10px;
+} */
+
+
+.poll_make {
+margin-top: 10px;
+text-align: center;
+}
+
+input[type="text"] {
+    width: 250px;
+    background-color: rgb(245, 245, 245);
+    border: 1px solid rgb(235, 235, 235);
+    padding: 7px;
+    margin-right: 5px;
+}
+
+input[type="text"]::placeholder {
+    font-weight: bold;
+    font-size: 13px;
+    color: rgb(150, 150, 150);
+}
+
+label {
+    color: #120644;
+    font-weight: bold;
+    font-size: 16px;
+    margin-right: 10px;
 }
