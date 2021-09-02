@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+$(document).ready(function(){
+	$('#btn1').click(function(){
+		var str = $('#txt').val();
+		$('#view1').text(str);
+	});
+	
+	$('#btn2').on('click',function(){
+		var str = $('#txt').val();
+		$('#view2').html(str);
+	});
+});
+</script>
+</head>
+<body>
+	<input type="text" id="txt" size="50" name="text">
+	<input type="button" value="출력1" id="btn1">
+	<input type="button" value="출력2" id="btn2">
+	<br><br><br>
+	<div id="view1"></div>
+	<div id="view2"></div>
+</body>
+</html>
+
+
+
+
