@@ -1,0 +1,29 @@
+step02_servlet  --Dynamic Web Project
+                  Dynamic Web Module Version: 4.0
+                  Context root: edu
+                  Content directory: WebContent
+                  Generate web.xml deployment descriptor(체크안함)
+                  
+    src
+       com.ssafy
+            HelloServlet.java  --servlet / doGet()
+            NextServlet.java   --servlet / doGet()
+	   com.ssafy.method
+	   		GetServlet.java    --servlet /name:GET,  urlpattern:/get.do  / doGet()
+	   		PostServlet.java   --servlet /name:POST, urlpattern:/post.do / doPost()
+	   		DBServlet.java     --servlet /name:DB,   urlpattern:/db.do   / doPost()
+	   	    schema.sql 
+	   	     
+    WebContent
+       WEB-INF
+          lib
+            mysql-connector-java-8.0.23.jar  <-- 이 프로젝트에서만 사용가능
+       getTest.html
+       postTest.html
+       dbTest.html
+       
+       
+       
+       
+       
+       
