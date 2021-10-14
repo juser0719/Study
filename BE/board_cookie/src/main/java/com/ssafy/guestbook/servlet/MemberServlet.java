@@ -70,6 +70,8 @@ public class MemberServlet extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 //			회원가입 실패 혹은 에러 문제.
+		} finally {
+			dbUtil.close(pstmt,conn);
 		}
 		
 		return "/user/login.jsp";
