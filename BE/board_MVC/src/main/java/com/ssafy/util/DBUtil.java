@@ -4,21 +4,17 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+
+
 public class DBUtil {
-
-	private final String driverName = "com.mysql.cj.jdbc.Driver";
-	private final String url = "jdbc:mysql://127.0.0.1:3306/ssafyweb?serverTimezone=UTC";
-	private final String user = "ssafy";
-	private final String pass = "127wjs778!";
-
 	private static DBUtil instance = new DBUtil();
 
 	private DBUtil() {
-		try {
-			Class.forName(driverName);
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
+		
 	}
 
 	public static DBUtil getInstance() {
@@ -26,7 +22,17 @@ public class DBUtil {
 	}
 
 	public Connection getConnection() throws SQLException {
-		return DriverManager.getConnection(url, user, pass);
+		Context context;
+		try {
+			context = new InitialContext();
+			Context root = (Context) context.lookup("java:comp/env");
+			DataSource ds = (DataSource) root.lookup("jdbc/ssafy");
+			return ds.getConnection();
+		} catch (NamingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public void close(AutoCloseable... closeables) {

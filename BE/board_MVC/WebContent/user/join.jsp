@@ -12,13 +12,14 @@
         			$("#idresult").text("아이디는 6자이상 16자이하입니다.").removeClass('text-primary').removeClass('text-danger').addClass('text-dark');
         			isId = false;
         		} else {
-	                $.ajax({
+	                $.ajax({	
 	                	url: '${root}/user',
 	                	data: {'act': 'idcheck', 'ckid': ckid},
 	                  	type: 'GET',
-	                  	dataType: 'text',
+	                  	dataType: 'xml',
 	                  	success: function (response) {
-	                    	var cnt = parseInt(response);
+	                  		console.log(response);
+	                    	var cnt = parseInt($(response).find("idcount").text());
 	                    	if(cnt == 0) {
 	                    		$("#idresult").text(ckid + "는 사용가능합니다.").removeClass('text-dark').removeClass('text-danger').addClass('text-primary');
 	                    		isId = true;

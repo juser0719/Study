@@ -17,22 +17,18 @@ public class MemberServiceImpl implements MemberService {
 		return memberService;
 	}
 	@Override
-	public int idCheck(String id) {
-		
-		return 0;
+	public int idCheck(String id)throws Exception {	
+		return memberDao.idCheck(id); // 0 or 1
 	}
 
 	@Override
 	public void registerMember(MemberDto memberDto) throws Exception {
-		
 		memberDao.registerMember(memberDto);
-
 	}
 
 	@Override
-	public MemberDto login(String id, String pass) {
-		// TODO Auto-generated method stub
-		return null;
+	public MemberDto login(String id, String pass) throws Exception {
+		return memberDao.login(id, pass);
 	}
 
 }

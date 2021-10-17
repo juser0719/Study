@@ -3,10 +3,10 @@ package com.ssafy.guestbook.model.dao;
 import com.ssafy.guestbook.model.MemberDto;
 
 public interface MemberDao {
-	int idCheck(String id);
+	int idCheck(String id) throws Exception;
 	void registerMember(MemberDto memberDto) throws Exception;
 	// 왜냐면 안되면 에러페이지 넘어가기 위
-	MemberDto login(String id,String pass);
+	MemberDto login(String id,String pass)throws Exception;
 	
 //	MemberDto getMember(String id);
 //	// 수정하기 위해 해당 정보 가져옴.

@@ -12,7 +12,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $("#mvRegisterBtn").click(function () {
-                location.href = "${root}/guestbook/write.jsp";
+                location.href = "${root}/guestbook?act=mvregister";
             });
         });
     </script>
@@ -22,6 +22,17 @@
             <h2 class="p-3 mb-3 shadow bg-light"><mark class="sky">글목록</mark></h2>
             <div class="m-3 text-right">
                 <button type="button" id="mvRegisterBtn" class="btn btn-link">글작성</button>
+            </div>
+            <div class="m-3 text-right">
+            	<form action="${root}/guestbook">
+            	<input type="hidden" name="act" value="list">
+            	<select name="key">
+            		<option value="userid"> 아이디
+            		<option value="subject"> 제목
+            	</select>
+            	<input type="text" name="word">
+            	<button type="submit" class="btn btn-link">검색</button>
+            	</form>
             </div>
 		<c:if test="${!empty articles}">
 			<c:forEach var="article" items="${articles}">
@@ -34,6 +45,10 @@
 					<tr>
 						<td colspan="2" class="table-danger">
 							<strong>${article.articleNo}. ${article.subject}</strong>
+						<c:if test="${userinfo.userId eq article.userId}">
+							<a href="${root}/guestbook?act=mvmodify&articleno=${article.articleNo}">수정</a>
+							<a href="${root}/guestbook?act=delete&articleno=${article.articleNo}">삭제</a>
+						</c:if>
 						</td>
 					</tr>
 					<tr>
