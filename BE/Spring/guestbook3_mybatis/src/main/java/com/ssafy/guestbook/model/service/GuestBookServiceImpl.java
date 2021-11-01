@@ -1,4 +1,4 @@
-package com.ssafy.guestbook.model.service;
+ package com.ssafy.guestbook.model.service;
 
 import java.io.File;
 import java.util.HashMap;

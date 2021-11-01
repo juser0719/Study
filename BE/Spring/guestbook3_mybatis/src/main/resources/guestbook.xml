@@ -7,8 +7,14 @@
 	<insert id="registerArticle" parameterType="guestbook">
 		insert into guestbook (userid, subject, content, regtime)
 		values (#{userId}, #{subject}, #{content}, now())
+		<!-- 
+			resultType: 받아오는 타입, 
+			keyProperty : 얻어온 값을 int로 얻어와서 guestbookDto에서 이 프로퍼티에 해당하는 값을 알아서 집어 넣어줌.  
+			order : 언제 할껀지?
+		-->
 		<selectKey resultType="int" keyProperty="articleNo" order="AFTER">
 			select last_insert_id()
+			<!-- insert와 동시에 마지막 articleNo를 얻어오라는것.-->
 		</selectKey>
 	</insert>
 	
@@ -19,8 +25,9 @@
 			(#{articleNo}, #{fileinfo.saveFolder}, #{fileinfo.originFile}, #{fileinfo.saveFile})
 		</foreach>
 	</insert>
-
+<!-- 여러개 얻어 낸 값들을 넣어줌. -->
 	<resultMap type="guestbook" id="articleList">
+	<!--  column : 실제이름 , property :저장할 이름  --> 		
 		<result column="articleno" property="articleNo"/>
 		<result column="userid" property="userId"/>
 		<result column="username" property="userName"/>

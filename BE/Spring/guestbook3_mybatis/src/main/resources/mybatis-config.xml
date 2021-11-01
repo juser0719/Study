@@ -5,7 +5,7 @@
 <configuration>
 
 	<properties resource="dbinfo.properties"/>
-
+	<!-- member.xml 에서 불러올때 이렇게 짧게 적으면 됨. -->
 	<typeAliases>
 		<typeAlias type="com.ssafy.guestbook.model.GuestBookDto" alias="guestbook" />
 		<typeAlias type="com.ssafy.guestbook.model.FileInfoDto" alias="fileinfo" />
@@ -32,6 +32,11 @@
             </dataSource>
         </environment>
     </environments>-->
+    
+    <!-- 
+   mappers = ORM 이니까 자바와 연결할 관계를 mapping 해줌.
+   
+     -->
     
     <mappers>
 		<mapper resource="member.xml" />

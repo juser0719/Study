@@ -21,6 +21,7 @@ public class GuestBookDaoImpl implements GuestBookDao {
 			sqlSession.insert(NAMESPACE + "registerArticle", guestBookDto);
 			List<FileInfoDto> fileInfos = guestBookDto.getFileInfos();
 			if (fileInfos != null && !fileInfos.isEmpty()) {
+//				여기서는 글 번호가 필요함. 그래서 guestbook.xml에서 가져옴.
 				sqlSession.insert(NAMESPACE + "registerFile", guestBookDto);
 			}
 			sqlSession.commit();
