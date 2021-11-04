@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>도서관리</title>
     <link rel="stylesheet" href="./css/main.css" />
-    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   </head>
   <body>
     <div id="app">
@@ -17,13 +17,13 @@
         <h1 class="underline">SSAFY 도서 정보</h1>
         <div class="regist_form">
           <label for="isbn">도서번호</label>
-          <div class="view"></div>
+          <div class="view">{{book.isbn}}</div>
           <label for="title">도서명</label>
-          <div class="view"></div>
+          <div class="view">{{book.title}}</div>
           <label for="author">저자</label>
-          <div class="view"></div>
+          <div class="view">{{book.author}}</div>
           <label for="price">가격</label>
-          <div class="view"></div>
+          <div class="view">{{numberWithCommas(book.price)}}원</div>
           <label for="content">설명</label>
           <div class="view" v-html="enterToBr(book.content)"></div>
           <div style="padding-top: 15px">
@@ -62,6 +62,7 @@
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
           },
           enterToBr(str) {
+            
             // 문자열에 enter값을 <br />로 변경.(html상에서 줄바꿈 처리)
             return str.replace(/(?:\r\n|\r|\n)/g, "<br />");
           }
