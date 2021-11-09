@@ -1,5 +1,5 @@
 export default {
-  template: `
+    template: `
     <div>
         <ul>
             <li><a href="./create.html">도서 등록</a></li>
