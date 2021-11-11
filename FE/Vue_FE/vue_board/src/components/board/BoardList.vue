@@ -21,16 +21,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(article, index) in articles" :key="index">
-            <td>{{ article.no }}</td>
-            <td>
-              <router-link :to="'view?no=' + article.no">{{
-                article.title
-              }}</router-link>
-            </td>
-            <td>{{ article.writer }}</td>
-            <td>{{ article.regtime }}</td>
-          </tr>
+          <board-list-row
+            v-for="(article, index) in articles"
+            :key="index"
+            v-bind="article"
+          ></board-list-row>
         </tbody>
       </table>
     </div>
@@ -39,25 +34,30 @@
 </template>
 
 <script>
-import axios from "axios";
+import http from "@/util/http-common.js";
+import BoardListRow from "@/components/board/BoardListRow";
+
 export default {
+  name: "BoardList",
+  components: {
+    BoardListRow,
+  },
   data() {
     return {
       articles: [],
     };
   },
   created() {
-    axios.get("http://localhost:9999/vue/api/board").then(({ data }) => {
+    http.get("/api/board").then(({ data }) => {
       this.articles = data;
     });
   },
   methods: {
     movePage() {
-      this.$router.push("/register");
+      this.$router.push({ name: "BoardWrite" });
     },
   },
 };
 </script>
 
-<style>
-</style>
+<style></style>
