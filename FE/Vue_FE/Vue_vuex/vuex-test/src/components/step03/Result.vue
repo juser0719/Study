@@ -14,17 +14,18 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters } from "vuex";
 
 export default {
   computed: {
-    ...mapGetters({
-      countMsg: 'countMsg',
-      msg1: 'msg1',
-      msg2: 'msg2',
-      msg3: 'msg3',
-    }),
-    // ...mapGetters(["countMsg", "msg1", "msg2", "msg3"]),
+    // store의 메소드를 조금더 쉽고 간편하게 불러올 수 있음. = mapGetter
+    // ...mapGetters({
+    //   countMsg: 'countMsg',
+    //   msg1: 'msg1',
+    //   msg2: 'msg2',
+    //   msg3: 'msg3',
+    // }),
+    ...mapGetters(["countMsg", "msg1", "msg2", "msg3"]),
     total() {
       return this.$store.state.count;
     },
