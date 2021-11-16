@@ -1,6 +1,10 @@
 <template>
-  <b-container v-if="apts && apts.length != 0" class="bv-example-row mt-3">
-    <house-list-row v-for="(apt, index) in apts" :key="index" :apt="apt" />
+  <b-container v-if="houses && houses.length != 0" class="bv-example-row mt-3">
+    <house-list-row
+      v-for="(house, index) in houses"
+      :key="index"
+      :house="house"
+    />
   </b-container>
   <b-container v-else class="bv-example-row mt-3">
     <b-row>
@@ -11,16 +15,17 @@
 
 <script>
 import HouseListRow from "@/components/house/HouseListRow.vue";
-
+import { mapState } from "vuex";
 export default {
   name: "HouseList",
   components: {
     HouseListRow,
   },
   data() {
-    return {
-      apts: ["a"],
-    };
+    return {};
+  },
+  computed: {
+    ...mapState(["houses"]),
   },
 };
 </script>

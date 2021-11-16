@@ -7,14 +7,16 @@ export default new Vuex.Store({
   state: {
     sidos: [{ value: null, text: "선택하시오" }],
     guguns: [{ value: null, text: "선택하시오" }],
+    houses: []
+
   },
   mutations: {
-    GET_SIDO_LIST(state, sidos) {
+    SET_SIDO_LIST(state, sidos) {
       sidos.forEach((sido) => {
         state.sidos.push({ value: sido.sidoCode, text: sido.sidoName });
       });
     },
-    GET_GUGUN_LIST(state, guguns) {
+    SET_GUGUN_LIST(state, guguns) {
       guguns.forEach((gugun) => {
         state.guguns.push({ value: gugun.gugunCode, text: gugun.gugunName });
       });
@@ -25,13 +27,16 @@ export default new Vuex.Store({
     CLEAR_GUGUN_LIST(state) {
       state.guguns = [{ value: null, text: "선택하시오" }];
     },
+    SET_HOUSE_LIST(state, houses) {
+      state.houses = houses;
+    },
   },
   actions: {
     getSido({ commit }) {
       http
         .get("/map/sido")
         .then((response) => {
-          commit("GET_SIDO_LIST", response.data);
+          commit("SET_SIDO_LIST", response.data);
         })
         .catch((e) => {
           console.log(e);
@@ -43,7 +48,7 @@ export default new Vuex.Store({
         .get(`/map/gugun`, { params })
         .then((response) => {
           console.log(response.data);
-          commit("GET_GUGUN_LIST", response.data);
+          commit("SET_GUGUN_LIST", response.data);
         })
         .catch((e) => {
           console.log(e);
@@ -61,7 +66,7 @@ export default new Vuex.Store({
         .get(SERVICE_URL, { params })
         .then((response) => {
           console.log(commit, response.data);
-          // commit("GET_GUGUN_LIST", response.data);
+          commit("SET_HOUSE_LIST", response.data.response.body.items.item);
         })
         .catch((e) => {
           console.log(e);

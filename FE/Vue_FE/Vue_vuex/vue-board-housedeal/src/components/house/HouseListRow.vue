@@ -12,7 +12,9 @@
         alt="Image 1"
       ></b-img>
     </b-col>
-    <b-col cols="10" class="align-self-center"> [일련번호] 아파트이름 </b-col>
+    <b-col cols="10" class="align-self-center">
+      [{{ house.일련번호 }}] {{ house.아파트이름 }}
+    </b-col>
   </b-row>
 </template>
 
@@ -23,6 +25,9 @@ export default {
     return {
       isColor: false,
     };
+  },
+  props: {
+    house: Object,
   },
   methods: {
     colorChange(flag) {
