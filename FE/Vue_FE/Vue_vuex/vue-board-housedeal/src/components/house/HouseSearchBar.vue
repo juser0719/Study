@@ -1,27 +1,46 @@
 <template>
   <b-row class="mt-4 mb-4 text-center">
     <b-col class="sm-3">
-      <b-form-input
-        v-model.trim="dongCode"
-        placeholder="동코드 입력...(예 : 11110)"
-        @keypress.enter="sendKeyword"
-      ></b-form-input>
+      <b-form-select v-model="sidoCode" :options="sidos" @change="gugunList">
+      </b-form-select>
     </b-col>
-    <b-col class="sm-3" align="left">
-      <b-button variant="outline-primary" @click="sendKeyword">검색</b-button>
+    <b-col class="sm-3">
+      <b-form-select v-model="gugunCode" :options="guguns"> </b-form-select>
     </b-col>
   </b-row>
 </template>
 
 <script>
+import { mapState, mapActions, mapMutations } from "vuex";
 export default {
   name: "HouseSearchBar",
   data() {
     return {
-      dongCode: "",
+      sidoCode: null,
+      gugunCode: null,
     };
   },
+  computed: {
+    // store에 있는 state 이름을 매핑해서 가져옴.
+    ...mapState(["sidos", "guguns"]),
+  },
+  created() {
+    // 들어오자 마자 가져온걸 options에 넣어줘야함.
+    // mapAction 없을떄 : this.$store.dispatch("getSido");
+    this.sidoList();
+    this.getGugun();
+  },
   methods: {
+    ...mapActions(["getSido", "getGugun"]),
+    ...mapMutations(["CLEAR_GUGUN_LIST", "CLEAR_SIDO_LIST"]),
+    sidoList() {
+      this.CLEAR_SIDO_LIST();
+      this.getSido();
+    },
+    gugunList() {
+      this.CLEAR_GUGUN_LIST();
+      if (this.sidoCode) this.getGugun(this.sidoCode);
+    },
     sendKeyword() {},
   },
 };
