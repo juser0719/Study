@@ -65,7 +65,7 @@ export default new Vuex.Store({
       http
         .get(SERVICE_URL, { params })
         .then((response) => {
-          console.log(commit, response.data);
+          console.log(commit, response.data.response.body.items.item);
           commit("SET_HOUSE_LIST", response.data.response.body.items.item);
         })
         .catch((e) => {

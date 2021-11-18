@@ -22,6 +22,11 @@
             ></b-nav-item
           >
           <b-nav-item href="#"
+            ><router-link :to="{ name: 'QnA' }" class="link"
+              ><b-icon icon="journal" font-scale="1"></b-icon> Q&A</router-link
+            ></b-nav-item
+          >
+          <b-nav-item href="#"
             ><router-link :to="{ name: 'Board' }" class="link"
               ><b-icon icon="journal" font-scale="1"></b-icon>
               게시판</router-link

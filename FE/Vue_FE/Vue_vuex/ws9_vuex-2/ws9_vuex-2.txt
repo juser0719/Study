@@ -1,0 +1,25 @@
+[STS]
+1. WS9_VUE_BOOK_API를 실행한다
+
+2. WorkBench에서 데이터베이스에 테이블을 추가한다.
+src/main/resources
+   mappers
+      schema.sel에 있는 comments 테이블을 만든다.
+=============================================================================================
+[Vue]
+1. C:\SSAFY\vuejs>vue create ws9_vuex-2
+   Maually select features(선택) -> Router(*) -> 2.x -> (Y/n) Y
+    -> ESLint + Prettier(선택) -> Lint onsave(선택)
+    -> (y/N) y -> In dedicated config files  -> Save preset as: mypreset -> enter  (또는 N)
+
+2. 설치: npm install --save axios vuex    
+
+3. npm install --save axios bootstrap-vue bootstrap@4.5.3   
+
+4. src와 public 를 복사한다.
+
+5. 실행방법 : 메뉴 -> Terminal -> new Terminal 
+    PS C:\ssafy\vuejs>cd ws9_vuex-2
+    PS C:\ssafy\vuejs\ws9_vuex-2>npm run serve (서버실행)
+    Local: http://localhost:8080/  <--- ctrl + click
+

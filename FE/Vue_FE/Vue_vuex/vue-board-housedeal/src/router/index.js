@@ -7,6 +7,13 @@ import Member from "@/views/Member.vue";
 import MemberLogin from "@/components/user/MemberLogin.vue";
 import MemberJoin from "@/components/user/MemberJoin.vue";
 
+import QnA from "@/views/QnA.vue";
+import QnAList from "@/components/qna/QnAList.vue";
+import QnAWrite from "@/components/qna/QnAWrite.vue";
+import QnAView from "@/components/qna/QnAView.vue";
+import QnAUpdate from "@/components/qna/QnAUpdate.vue";
+import QnADelete from "@/components/qna/QnADelete.vue";
+
 import Board from "@/views/Board.vue";
 import BoardList from "@/components/board/BoardList.vue";
 import BoardWrite from "@/components/board/BoardWrite.vue";
@@ -76,6 +83,39 @@ const routes = [
         path: "delete/:articleno",
         name: "BoardDelete",
         component: BoardDelete,
+      },
+    ],
+  },
+  {
+    path: "/qna",
+    name: "QnA",
+    component: QnA,
+    redirect: "/qna/list",
+    children: [
+      {
+        path: "list",
+        name: "QnAList",
+        component: QnAList,
+      },
+      {
+        path: "write",
+        name: "QnAWrite",
+        component: QnAWrite,
+      },
+      {
+        path: "detail/:qnano",
+        name: "QnAView",
+        component: QnAView,
+      },
+      {
+        path: "update/:qnano",
+        name: "QnAUpdate",
+        component: QnAUpdate,
+      },
+      {
+        path: "delete/:qnano",
+        name: "QnADelete",
+        component: QnADelete,
       },
     ],
   },
