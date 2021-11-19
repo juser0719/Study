@@ -124,6 +124,7 @@ const routes = [
     name: "House",
     component: House,
   },
+
 ];
 
 const router = new VueRouter({

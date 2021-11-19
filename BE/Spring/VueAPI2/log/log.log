@@ -17,3 +17,4 @@
 [2m2021-11-18 10:14:00.129[0;39m [32mDEBUG[0;39m [35m4692[0;39m [2m---[0;39m [2m[io-9999-exec-10][0;39m [36mc.s.v.controller.CommentRestController  [0;39m [2m:[0;39m com.ssafy.vue.model.CommentDto@606290b1
 [2m2021-11-18 10:14:05.117[0;39m [32mDEBUG[0;39m [35m4692[0;39m [2m---[0;39m [2m[nio-9999-exec-1][0;39m [36mc.s.v.controller.CommentRestController  [0;39m [2m:[0;39m modifyComment - 호출
 [2m2021-11-18 10:14:05.118[0;39m [32mDEBUG[0;39m [35m4692[0;39m [2m---[0;39m [2m[nio-9999-exec-1][0;39m [36mc.s.v.controller.CommentRestController  [0;39m [2m:[0;39m com.ssafy.vue.model.CommentDto@54b8f7c7
+[2m2021-11-18 14:09:50.306[0;39m [32m INFO[0;39m [35m4692[0;39m [2m---[0;39m [2m[(247)-127.0.0.1][0;39m [36minMXBeanRegistrar$SpringApplicationAdmin[0;39m [2m:[0;39m Application shutdown requested.

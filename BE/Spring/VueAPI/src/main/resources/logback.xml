@@ -26,8 +26,8 @@
 		</encoder>
 	</appender>
 	<logger name="com.ssafy.vue.controller" level="debug"/>
-	<logger name="com.ssafy.vue.dao" level="INFO"/>
-	<logger name="com.ssafy.vue.service" level="INFO"/>
+	<logger name="com.ssafy.vue.model.mapper" level="INFO"/>
+	<logger name="com.ssafy.vue.model.service" level="INFO"/>
 	<logger name="org.springframework" level="INFO"/>
 	
 	<root level="debug">
