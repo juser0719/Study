@@ -4,14 +4,11 @@
       <b-icon icon="house-fill"></b-icon> House Service
     </h3>
     <b-row>
-      <b-col cols="12" align="center">
+      <b-col>
         <house-search-bar></house-search-bar>
       </b-col>
     </b-row>
     <b-row>
-      <div class="column is-two-thirds">
-        <house-map />
-      </div>
       <b-col cols="6" align="left">
         <house-list />
       </b-col>
@@ -25,16 +22,13 @@
 import HouseSearchBar from "@/components/house/HouseSearchBar.vue";
 import HouseList from "@/components/house/HouseList.vue";
 import HouseDetail from "@/components/house/HouseDetail.vue";
-import HouseMap from "@/components/house/HouseMap.vue";
 
 export default {
   name: "House",
-
   components: {
     HouseSearchBar,
     HouseList,
     HouseDetail,
-    HouseMap,
   },
 };
 </script>

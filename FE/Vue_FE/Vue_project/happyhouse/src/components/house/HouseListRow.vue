@@ -14,7 +14,7 @@
       ></b-img>
     </b-col>
     <b-col cols="10" class="align-self-center">
-      [{{ house.일련번호 }}] {{ house.아파트 }}
+      [{{ house.aptCode }}] {{ house.aptName }}
     </b-col>
   </b-row>
 </template>
@@ -36,11 +36,11 @@ export default {
   },
   methods: {
     ...mapActions(houseStore, ["detailHouse"]),
-    selectHouse() {
-      this.detailHouse(this.house);
-    },
     colorChange(flag) {
       this.isColor = flag;
+    },
+    selectHouse() {
+      this.detailHouse(this.house);
     },
   },
 };

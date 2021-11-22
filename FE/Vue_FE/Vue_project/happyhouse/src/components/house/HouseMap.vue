@@ -1,6 +1,14 @@
 <template>
   <div>
     <div id="map"></div>
+    <div class="button-group">
+      <button @click="changeSize(0)">Hide</button>
+      <button @click="changeSize(400)">show</button>
+      <button @click="displayMarker(markerPositions1)">marker set 1</button>
+      <button @click="displayMarker(markerPositions2)">marker set 2</button>
+      <button @click="displayMarker([])">marker set 3 (empty)</button>
+      <button @click="displayInfoWindow">infowindow</button>
+    </div>
   </div>
 </template>
 
@@ -33,9 +41,10 @@ export default {
       this.initMap();
     } else {
       const script = document.createElement("script");
+      /* global kakao */
       script.onload = () => kakao.maps.load(this.initMap);
       script.src =
-        "//dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=f0c98f5648ba4cc4eb3da2fd8333e3f9";
+        "//dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=915cffed372954b7b44804ed422b9cf0";
       document.head.appendChild(script);
     }
   },
@@ -107,8 +116,8 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 #map {
-  width: 100vh;
-  height: 300px;
+  width: 400px;
+  height: 400px;
 }
 
 .button-group {

@@ -44,7 +44,7 @@ public class HouseMapController {
 		return new ResponseEntity<List<SidoGugunCodeDto>>(haHouseMapService.getGugunInSido(sido), HttpStatus.OK);
 	}
 	
-	@ApiOperation(value = "동 정", notes = "구군에 대한 동 반환한다.", response = List.class)
+	@ApiOperation(value = "동 정보", notes = "구군에 대한 동 반환한다.", response = List.class)
 	@GetMapping("/dong")
 	public ResponseEntity<List<HouseInfoDto>> dong(@RequestParam("gugun") String gugun) throws Exception {
 		return new ResponseEntity<List<HouseInfoDto>>(haHouseMapService.getDongInGugun(gugun), HttpStatus.OK);
