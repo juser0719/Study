@@ -1,7 +1,7 @@
 <template>
   <!-- ======= Hero Section ======= -->
   <b-container id="hero" style="background-image: none">
-    <b-row class="signup-form">
+    <div class="signup-form">
       <b-form class="form-horizontal">
         <b-row class="col-8 offset-4">
           <h2>회원 가입</h2>
@@ -107,7 +107,7 @@
           </b-row>
         </b-row>
       </b-form>
-    </b-row>
+    </div>
   </b-container>
 </template>
 
@@ -218,7 +218,7 @@ export default {
 
 .signup-form {
   margin: 0 auto;
-  padding: 30px 0;
+  padding: 30px 100px;
 }
 
 .signup-form h2 {

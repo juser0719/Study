@@ -15,6 +15,12 @@ import BoardWrite from "@/components/board/BoardWrite.vue";
 import BoardView from "@/components/board/BoardView.vue";
 import BoardUpdate from "@/components/board/BoardUpdate.vue";
 
+import Notice from "@/views/Notice.vue";
+import NoticeList from "@/components/notice/NoticeList.vue";
+import NoticeWrite from "@/components/notice/NoticeWrite.vue";
+import NoticeView from "@/components/notice/NoticeView.vue";
+import NoticeUpdate from "@/components/notice/NoticeUpdate.vue";
+
 import House from "@/views/House.vue";
 
 import store from "@/store/index.js";
@@ -116,6 +122,42 @@ const routes = [
     path: "/house",
     name: "House",
     component: House,
+  },
+  {
+    path: "/notice",
+    name: "Notice",
+    component: Notice,
+    redirect: "/notice/list",
+    children: [
+      {
+        path: "list",
+        name: "NoticeList",
+        component: NoticeList,
+      },
+      {
+        path: "write",
+        name: "NoticeWrite",
+        beforeEnter: onlyAuthUser,
+        component: NoticeWrite,
+      },
+      {
+        path: "detail/:articleno",
+        name: "NoticeView",
+        beforeEnter: onlyAuthUser,
+        component: NoticeView,
+      },
+      {
+        path: "update/:articleno",
+        name: "NoticeUpdate",
+        beforeEnter: onlyAuthUser,
+        component: NoticeUpdate,
+      },
+      // {
+      //   path: "delete/:articleno",
+      //   name: "NoticeDelete",
+      //   component: NoticeDelete,
+      // },
+    ],
   },
   {
     path: "*",
