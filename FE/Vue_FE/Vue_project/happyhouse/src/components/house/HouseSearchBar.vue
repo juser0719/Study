@@ -32,6 +32,7 @@
           @change="searchApt"
         ></b-form-select>
       </b-col>
+      <b-button @click="callAPI"> API호출테스트 </b-button>
     </b-row>
   </div>
 </template>
@@ -48,6 +49,15 @@ export default {
       sidoCode: null,
       gugunCode: null,
       dongCode: null,
+
+      requestdto: {
+        pageNo: "1",
+        numOfRows: "10",
+        lawdcd: "11110",
+        dealymd: "202009",
+        sidoName: "서울특별시",
+        gugunName: "종로구",
+      },
     };
   },
   computed: {
@@ -69,6 +79,7 @@ export default {
       "getGugun",
       "getDong",
       "getHouseList",
+      "getDealList",
     ]),
     ...mapMutations(houseStore, [
       "CLEAR_SIDO_LIST",
@@ -94,6 +105,11 @@ export default {
       if (this.dongCode) this.getHouseList(this.dongCode); // ->houses -> 마커를찍고싶다
     },
     sendKeyword() {},
+
+    //////api호출
+    async callAPI() {
+      await this.getDealList(this.requestdto);
+    },
   },
 };
 </script>

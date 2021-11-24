@@ -1,4 +1,10 @@
-import { sidoList, gugunList, houseList, dongList } from "@/api/house.js";
+import {
+  sidoList,
+  gugunList,
+  houseList,
+  dongList,
+  dealList,
+} from "@/api/house.js";
 
 const houseStore = {
   namespaced: true,
@@ -119,6 +125,20 @@ const houseStore = {
     detailHouse: ({ commit }, house) => {
       // 나중에 house.일련번호를 이용하여 API 호출
       commit("SET_DETAIL_HOUSE", house);
+    },
+
+    /////////////////
+    async getDealList({ commit }, requestdto) {
+      console.log(requestdto);
+      await dealList(
+        requestdto,
+        (response) => {
+          commit("SET_HOUSE_LIST", response.data);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
     },
   },
 };

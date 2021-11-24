@@ -19,4 +19,11 @@ function houseList(params, success, fail) {
   api.get(`/map/apt`, { params: params }).then(success).catch(fail);
 }
 
-export { sidoList, gugunList, houseList, dongList };
+function dealList(requestdto, success, fail) {
+  console.log("@@@@");
+  console.log(JSON.stringify(requestdto));
+
+  api.post(`/map/aptAPI`, JSON.stringify(requestdto)).then(success).catch(fail);
+}
+
+export { sidoList, gugunList, houseList, dongList, dealList };

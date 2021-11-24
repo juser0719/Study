@@ -47,8 +47,12 @@
           </b-container>
           <hr class="my-4" />
 
-          <b-button variant="primary" href="#" class="mr-1">정보수정</b-button>
-          <b-button variant="danger" href="#">회원탈퇴</b-button>
+          <b-button variant="primary" @click="moveUpdatePage" @class="mr - 1"
+            >정보수정</b-button
+          >
+          <b-button type="button" variant="danger" @click="deleteUser"
+            >회원탈퇴</b-button
+          >
         </b-jumbotron>
       </b-col>
       <b-col></b-col>
@@ -57,7 +61,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapActions, mapMutations } from "vuex";
 
 const memberStore = "memberStore";
 
@@ -65,7 +69,33 @@ export default {
   name: "MemberMyPage",
   components: {},
   computed: {
-    ...mapState(memberStore, ["userInfo"]),
+    ...mapState(memberStore, ["isLogin", "userInfo"]),
+  },
+
+  methods: {
+    ...mapMutations(memberStore, ["SET_IS_LOGIN", "SET_USER_INFO"]),
+    ...mapActions(memberStore, ["deleteMember", "getUserInfo"]),
+    async deleteUser() {
+      console.log(this.userInfo.userid);
+      await this.deleteMember(this.userInfo.userid);
+      if (this.userInfo === null) {
+        alert("회원 탈퇴 성공");
+        this.Logout();
+      }
+    },
+    movePage() {
+      this.$router.push({ name: "SignUp" });
+    },
+    moveUpdatePage() {
+      this.$router.push({ name: "Update" });
+    },
+
+    Logout() {
+      this.SET_IS_LOGIN(false);
+      this.SET_USER_INFO(null);
+      sessionStorage.removeItem("access-token");
+      if (this.$route.path != "/") this.$router.push({ name: "Home" });
+    },
   },
 };
 </script>

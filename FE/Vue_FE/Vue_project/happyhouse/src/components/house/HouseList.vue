@@ -3,10 +3,7 @@
     <b-row>
       <b-container id="map" style="width: 100%; height: 500px"></b-container>
     </b-row>
-    <b-container
-      v-if="houses && houses.length != 0"
-      class="bv-example-row mt-3"
-    >
+    <b-container v-if="houses" class="bv-example-row mt-3">
       <house-list-row
         v-for="(house, index) in houses"
         :key="index"

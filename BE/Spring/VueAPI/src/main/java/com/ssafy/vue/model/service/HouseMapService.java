@@ -3,6 +3,7 @@ package com.ssafy.vue.model.service;
 import java.util.List;
 
 import com.ssafy.vue.model.HouseInfoDto;
+import com.ssafy.vue.model.RequestDto;
 import com.ssafy.vue.model.SidoGugunCodeDto;
 
 public interface HouseMapService {
@@ -11,5 +12,6 @@ public interface HouseMapService {
 	List<SidoGugunCodeDto> getGugunInSido(String sido) throws Exception;
 	List<HouseInfoDto> getDongInGugun(String gugun) throws Exception;
 	List<HouseInfoDto> getAptInDong(String dong) throws Exception;
+	List<HouseInfoDto> getAptByAPI(RequestDto requestDto) throws Exception;
 	
 }

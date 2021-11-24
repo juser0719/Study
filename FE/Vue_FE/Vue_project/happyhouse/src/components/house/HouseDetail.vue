@@ -27,7 +27,7 @@
       </b-row>
       <b-row>
         <b-col>
-          <b-alert show variant="info">법정동 : {{ house.dongCode }} </b-alert>
+          <b-alert show variant="info">법정동 : {{ house.dongName }} </b-alert>
         </b-col>
       </b-row>
       <b-row>
