@@ -25,8 +25,8 @@
     <b-row class="mb-1">
       <b-col>
         <b-card
-          :header-html="`<h3>${article.articleno}.
-          ${article.subject} [${article.hit}]</h3><div><h6>${article.userid}</div><div>${article.regtime}</h6></div>`"
+          :header-html="`<h3>${notice.noticeno}.
+          ${notice.subject} [${notice.hit}]</h3><div><h6>${notice.userid}</div><div>${notice.regtime}</h6></div>`"
           class="mb-2"
           border-variant="dark"
           no-body
@@ -38,7 +38,7 @@
       </b-col>
     </b-row>
     <!-- 도서정보 상세보기 Component -->
-    <comment-write :articleno="this.articleno" />
+    <comment-write :noticeno="this.noticeno" />
     <comment-write
       v-if="isModifyShow && this.modifyComment != null"
       :modifyComment="this.modifyComment"
@@ -54,8 +54,8 @@
 </template>
 
 <script>
-// import moment from "moment";
 import { getArticle, deleteArticle } from "@/api/notice";
+import { getComment } from "@/api/comment.js";
 import { mapGetters } from "vuex";
 import CommentWrite from "@/components/notice/comment/CommentWrite.vue";
 import Comment from "@/components/notice/comment/Comment.vue";
@@ -68,56 +68,68 @@ export default {
   },
   data() {
     return {
-      article: {},
-      articleno: "",
+      notice: {},
+      noticeno: "",
+      comments: [],
       isModifyShow: false,
       modifyComment: Object,
     };
   },
   computed: {
     message() {
-      if (this.article.content)
-        return this.article.content.split("\n").join("<br>");
+      if (this.notice.content)
+        return this.notice.content.split("\n").join("<br>");
       return "";
     },
-    ...mapGetters(["book", "comments"]),
-    // changeDateFormat() {
-    //   return moment(new Date(this.article.regtime)).format(
-    //     "YYYY.MM.DD hh:mm:ss"
-    //   );
-    // },
+
+    ...mapGetters(["comments"]),
+  },
+  watch: {
+    comments: function () {
+      this.listComment();
+    },
   },
   created() {
     getArticle(
-      this.$route.params.articleno,
+      Number(this.$route.params.noticeno),
       (response) => {
-        this.article = response.data;
+        this.notice = response.data;
       },
       (error) => {
         console.log("삭제시 에러발생!!", error);
       }
     );
-
-    // url이 query에서 articleno 얻기.
-    this.articleno = this.$route.query.articleno;
-
+    this.listComment();
+    // url이 query에서 noticeno 얻기.
+    this.noticeno = this.$route.query.noticeno;
     // 도서평(댓글) 얻기.
-    this.$store.dispatch("getComments", `/comment/${this.articleno}`);
+    this.$store.dispatch("getComments", `/comment/${this.noticeno}`);
   },
   methods: {
     listArticle() {
       this.$router.push({ name: "NoticeList" });
     },
+    listComment() {
+      getComment(
+        Number(this.$route.params.noticeno),
+        (response) => {
+          this.comments = response.data;
+        },
+        (error) => {
+          console.log("댓글 불러오기 에러! ", error);
+        }
+      );
+    },
     moveModifyArticle() {
       this.$router.replace({
         name: "NoticeUpdate",
-        params: { articleno: this.article.articleno },
+        params: { noticeno: this.notice.noticeno },
       });
       //   this.$router.push({ path: `/board/modify/${this.article.articleno}` });
     },
     removeArticle() {
       if (confirm("정말로 삭제?")) {
-        deleteArticle(this.article.articleno, () => {
+        deleteArticle(this.notice.noticeno, () => {
           this.$router.push({ name: "NoticeList" });
         });
       }

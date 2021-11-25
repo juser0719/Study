@@ -30,6 +30,13 @@ public class HouseInfoDto {
 	private String img;
 	@ApiModelProperty(value = "매매가격")
 	private String recentPrice;
+	
+	@ApiModelProperty(value = "도로명")
+	private String roadName;
+	
+	@ApiModelProperty(value = "도로명건물본번호코드")
+	private String buildingCode;
+	
 
 	public int getAptCode() {
 		return aptCode;
@@ -126,4 +133,21 @@ public class HouseInfoDto {
 	public void setRecentPrice(String recentPrice) {
 		this.recentPrice = recentPrice;
 	}
+
+	public String getRoadName() {
+		return roadName;
+	}
+
+	public void setRoadName(String roadName) {
+		this.roadName = roadName;
+	}
+
+	public String getBuildingCode() {
+		return buildingCode;
+	}
+
+	public void setBuildingCode(String buildingCode) {
+		this.buildingCode = buildingCode;
+	}
+	
 }

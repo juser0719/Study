@@ -50,7 +50,7 @@ export default {
       // 차후 작성자 이름은 로그인 구현후 로그인한 사용자로 바꾼다.
       userid: "",
       comment: "",
-      articleNo: "",
+      noticeNo: "",
     };
   },
 
@@ -60,42 +60,39 @@ export default {
   created() {
     console.log("created_CW");
     console.log(this.checkUserInfo);
-    this.userid = this.checkUserInfo.userId;
-    // console.log("메롱");
-    // console.log(this.$route.params.articleno);
-    this.articleNo = this.$route.params.articleno;
+    this.userid = this.checkUserInfo.userid;
+    this.noticeNo = this.$route.params.noticeno;
   },
   props: {
-    articleno: { type: String },
+    noticeno: { type: String },
     modifyComment: { type: Object },
   },
   methods: {
     registComment() {
-      writeComment(
-        {
-          userid: this.userid,
-          comment: this.comment,
-          articleno: this.articleNo,
-        },
-        ({ data }) => {
-          let msg = "등록 처리시 문제가 발생했습니다.";
-          if (data === "success") {
-            msg = "등록이 완료되었습니다.";
-          }
-          alert(msg);
-          // 작성글 지우기
-          this.comment = "";
-
-          // 도서평(댓글) 얻기.
-          this.$store.dispatch(getComment());
-          // this.$store.dispatch("getComments", `/comment/${this.articleno}`);
+      const param = {
+        userid: this.userid,
+        comment: this.comment,
+        noticeno: this.noticeNo,
+      };
+      writeComment(param, ({ data }) => {
+        let msg = "등록 처리시 문제가 발생했습니다.";
+        if (data === "success") {
+          msg = "등록이 완료되었습니다.";
         }
-      );
+        alert(msg);
+        // 작성글 지우기
+        this.comment = "";
+
+        // 도서평(댓글) 얻기.
+        this.$store.dispatch(getComment());
+        // this.$store.dispatch("getComments", `/comment/${this.articleno}`);
+      });
     },
     updateComment() {
       modifyComment(
         {
-          qna_memono: this.modifyComment.qna_memono,
+          comment_no: this.modifyComment.comment_no,
+          noticeno: this.modifyComment.noticeno,
           comment: this.modifyComment.comment,
         },
         ({ data }) => {
@@ -111,9 +108,9 @@ export default {
         }
       );
     },
-    // updateCommentCancel() {
-    //   this.$emit("modify-comment-cancel", false);
-    // },
+    updateCommentCancel() {
+      this.$emit("modify-comment-cancel", false);
+    },
   },
 };
 </script>

@@ -1,6 +1,7 @@
 package com.ssafy.vue.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -50,8 +51,8 @@ public class HouseMapController {
 
 	@ApiOperation(value = "동 정보", notes = "구군에 대한 동 반환한다.", response = List.class)
 	@GetMapping("/dong")
-	public ResponseEntity<List<HouseInfoDto>> dong(@RequestParam("gugun") String gugun) throws Exception {
-		return new ResponseEntity<List<HouseInfoDto>>(haHouseMapService.getDongInGugun(gugun), HttpStatus.OK);
+	public ResponseEntity<List<SidoGugunCodeDto>> dong(@RequestParam("gugun") String gugun) throws Exception {
+		return new ResponseEntity<List<SidoGugunCodeDto>>(haHouseMapService.getDongInGugun(gugun), HttpStatus.OK);
 	}
 
 	@ApiOperation(value = "동 검색", notes = "동에 해당하는 HouseInfoDto 반환한다.", response = List.class)
@@ -64,6 +65,12 @@ public class HouseMapController {
 	@PostMapping("/aptAPI")
 	public ResponseEntity<List<HouseInfoDto>> getAptByAPI(@RequestBody RequestDto requestDto) throws Exception {
 		return new ResponseEntity<List<HouseInfoDto>>(haHouseMapService.getAptByAPI(requestDto), HttpStatus.OK);
+	}
+	
+	@ApiOperation(value = "동 넣기", notes = "동코드 디비에 넣기", response = Boolean.class)
+	@GetMapping("/registerDong")
+	public ResponseEntity<Map<String,String>> registerDong() throws Exception {
+		return new ResponseEntity<Map<String,String>>(haHouseMapService.registerDong(), HttpStatus.OK);
 	}
 
 }

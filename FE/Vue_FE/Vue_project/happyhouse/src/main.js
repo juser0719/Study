@@ -7,11 +7,9 @@ import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 import store from "./store";
-import memberStore from "./store/modules/memberStore";
+// import memberStore from "./store/modules/memberStore";
 
-// Make BootstrapVue available throughout your project
 Vue.use(BootstrapVue);
-// Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin);
 
 Vue.config.productionTip = false;
@@ -21,8 +19,8 @@ new Vue({
   store,
   async beforeCreate() {
     let token = sessionStorage.getItem("access-token");
-    if (memberStore.state.userInfo == null && token) {
-      await memberStore.dispatch("getUserInfo", token);
+    if (store.memberStore.state.userInfo == null && token) {
+      await store.memberStore.dispatch("getUserInfo", token);
     }
   },
   render: (h) => h(App),

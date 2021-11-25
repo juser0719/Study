@@ -40,12 +40,18 @@ public class CommentDto {
 	public void setComment_time(String comment_time) {
 		this.comment_time = comment_time;
 	}
-	public int getQnano() {
+	public int getNoticeno() {
 		return noticeno;
 	}
-	public void setQnano(int noticeno) {
+	public void setNoticeno(int noticeno) {
 		this.noticeno = noticeno;
 	}
+	@Override
+	public String toString() {
+		return "CommentDto [comment_no=" + comment_no + ", userid=" + userid + ", comment=" + comment
+				+ ", comment_time=" + comment_time + ", noticeno=" + noticeno + "]";
+	}
+
 
 
 }

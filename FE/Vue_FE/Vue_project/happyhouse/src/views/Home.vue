@@ -1,28 +1,27 @@
 <template>
   <b-container class="bv-example-row mt-3 text-center">
-    <h3 class="underline-steelblue"><b-icon icon="house"></b-icon> SSAFY</h3>
+    <h3 class="underline-steelblue mb-5">
+      <b-icon icon="house"></b-icon> UnHappy Apt
+    </h3>
     <b-row>
-      <b-col></b-col>
-      <b-col cols="10">
-        <b-jumbotron
-          bg-variant="muted"
-          text-variant="dark"
-          border-variant="dark"
-        >
-          <template #header>SSAFY Home</template>
-
-          <template #lead>
-            슬기로운 싸피 생활 (:6기편) <br />
-            열정 하~~~~앗 Six!!!!!
-          </template>
-
-          <hr class="my-4" />
-
-          <p>Vue + Bootstrap활용.</p>
-          <p>Bootstrap-vue는 버전 <b>4.5.3</b>을 권장합니다.</p>
-          <p><b>BoardList.vue</b>를 바꿔가면서 테스트하세요.</p>
-          <p>Bootstrap의 <b>table</b> 사용법을 익히게됩니다.</p>
-        </b-jumbotron>
+      <b-col cols="12">
+        <div>
+          <b-carousel
+            id="carousel-fade"
+            style="text-shadow: 0px 0px 2px #000"
+            fade
+            indicators
+            img-width="1024"
+            img-height="480"
+          >
+            <b-carousel-slide
+              img-src="https://i.picsum.photos/id/1031/5446/3063.jpg?hmac=Zg0Vd3Bb7byzpvy-vv-fCffBW9EDp1coIbBFdEjeQWE"
+            ></b-carousel-slide>
+            <b-carousel-slide
+              img-src="https://i.picsum.photos/id/1029/4887/2759.jpg?hmac=uMSExsgG8_PWwP9he9Y0LQ4bFDLlij7voa9lU9KMXDE"
+            ></b-carousel-slide>
+          </b-carousel>
+        </div>
       </b-col>
       <b-col></b-col>
     </b-row>

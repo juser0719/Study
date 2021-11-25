@@ -17,9 +17,9 @@
 		order by gugunCode
 	</select>
 	
-	<select id="getDongInGugun" parameterType="string" resultType="houseInfoDto">
+	<select id="getDongInGugun" parameterType="string" resultType="sidoGugunCodeDto">
 		select distinct dongName, dongCode
-		from houseinfo
+		from dongcode
 		where left(dongCode, 5) = #{gugun}
 		order by dongName
 	</select>

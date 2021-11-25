@@ -21,29 +21,29 @@
 
 <script>
 // import http from "@/util/http-common";
-import { modifyComment, deleteComment } from "@/api/comment";
+import { deleteComment } from "@/api/comment";
 
 export default {
   name: "comment",
   props: {
     // // 상위 component에서 전달한 도서평을 받는다.
     comment: Object,
-    // userid: String,
-    // qna_memotime: String,
-    // comment: String,
+  },
+  created() {
+    console.log(this.comment);
   },
   methods: {
     modifyCommentView() {
       // 상위 component의 modify-comment인 event listener에 전달.
-      modifyComment({
-        qna_memono: this.comment.qna_memono,
+      this.$emit("modify-comment", {
+        comment_no: this.comment.comment_no,
         comment: this.comment.comment,
-        articleno: this.comment.articleno,
+        noticeno: this.comment.noticeno,
       });
     },
     deleteComment() {
       if (confirm("정말로 삭제?")) {
-        deleteComment(({ data }) => {
+        deleteComment(this.comment.comment_no, ({ data }) => {
           let msg = "삭제 처리시 문제가 발생했습니다.";
           if (data === "success") {
             msg = "삭제가 완료되었습니다.";
@@ -52,23 +52,9 @@ export default {
           // 도서평(댓글) 얻기.
           this.$store.dispatch(
             "getComments",
-            `/comment/${this.comment.articleno}`
+            `/comment/${this.comment.comment_no}`
           );
         });
-
-        // // 서버로 삭제할 도서평번호를 전달.
-        // http.delete(`/comment/${this.comment.qna_memono}`).then(({ data }) => {
-        //   let msg = "삭제 처리시 문제가 발생했습니다.";
-        //   if (data === "success") {
-        //     msg = "삭제가 완료되었습니다.";
-        //   }
-        //   alert(msg);
-        //   // 도서평(댓글) 얻기.
-        //   this.$store.dispatch(
-        //     "getComments",
-        //     `/comment/${this.comment.articleno}`
-        //   );
-        // });
       }
     },
     enterToBr(str) {

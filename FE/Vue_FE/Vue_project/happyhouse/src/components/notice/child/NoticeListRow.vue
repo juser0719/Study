@@ -1,9 +1,9 @@
 <template>
   <b-tr>
-    <b-td>{{ articleno }}</b-td>
+    <b-td>{{ noticeno }}</b-td>
     <b-th class="text-left">
       <router-link
-        :to="{ name: 'NoticeView', params: { articleno: articleno } }"
+        :to="{ name: 'NoticeView', params: { noticeno: noticeno } }"
         >{{ subject }}</router-link
       >
     </b-th>
@@ -19,7 +19,7 @@
 export default {
   name: "NoticeListRow",
   props: {
-    articleno: Number,
+    noticeno: Number,
     userid: String,
     subject: String,
     hit: Number,
